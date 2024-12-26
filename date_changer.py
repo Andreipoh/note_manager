@@ -1,0 +1,6 @@
+created_date = input('Введите дату создания заметки в формате "день-месяц-год": ')
+issue_date = input('Введите дату истечения заметки в формате "день-месяц-год": ')
+temp_created_date = created_date.replace()
+temp_issue_date = issue_date.replace()
+print('Дату создания заметки',temp_created_date)
+print('Дату истечения заметки', temp_issue_date)
