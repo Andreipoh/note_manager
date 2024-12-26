@@ -1,11 +1,13 @@
-username = "Похлебаев Андрей"
-title =
-content =
-status =
-created_date = "22-12-2024"
-issue_date = "22-01-2025"
-temp_created_date = "22.12"
-temp_issue_date = "22.01"
-print(temp_created_date)
-print(temp_issue_date)
+username = input('Введите имя пользователя: ')
+title = input('Введите заголовок заметки: ')
+content = input('Введите описание заметки: ')
+status = input('Введите статус заметки: ')
+created_date = input('Введите дату создания заметки в формате "день-месяц-год" "xx-xx-xxxx": ')
+issue_date = input('Введите дату истечения заметки в формате "день-месяц-год" "xx-xx-xxxx": ')
+print('Имя пользователя', username)
+print('Заголовок заметки',title)
+print('Описание заметки', content)
+print('Статус заметки', status)
+print('Дату создания заметки', created_date)
+print('Дату истечения заметки', issue_date)
 
