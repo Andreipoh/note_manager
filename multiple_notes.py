@@ -12,5 +12,5 @@ while True:
     i = input('Хотите добавить ещё одну заметку? (да/нет): ')
     if i == 'нет':
         break
-for note in notes:
-    print(note)
+for key in note:
+    print(key,note[key])
