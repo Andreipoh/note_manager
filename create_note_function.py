@@ -6,6 +6,6 @@ def create_note():
     d = input('Введите статус заметки (новая, в процессе, выполнено): ')
     e = date.today()
     f = input('Введите дедлайн (день-месяц-год): ')
-    print( { 'username': a, 'title': b, 'content': c, 'status': d, 'created_date ': e, 'issue_date': f })
+    print( { 'username': a, 'title': b, 'content': c, 'status': d, 'created_date ': f'{e.day}-{e.month}-{e.year}', 'issue_date': f })
 create_note()
 print()
