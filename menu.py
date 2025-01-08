@@ -117,7 +117,7 @@ while True:
     elif x == 4:
         delete_note(notes)
     elif x == 5:
-        search_notes(notes, keyword=input(), status=input())
+        search_notes(notes, keyword=input('Введите ключевое слово: '), status=input('Введите статус: '))
     elif x == 6:
         print('Программа завершена. Спасибо за использование!')
         break
