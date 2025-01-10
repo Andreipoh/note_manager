@@ -1,5 +1,6 @@
+# Создание меню действий
 from datetime import date
-
+# Определение функции "Создание заметки"
 def create_note():
     n = 0
     a = input('Введите имя пользователя: ')
@@ -8,23 +9,34 @@ def create_note():
     d = input('Введите статус заметки (новая, в процессе, выполнено): ')
     e = date.today()
     f = input('Введите дедлайн (день-месяц-год): ')
-    note = {f'{1+n}.' 'username': a, 'title': b, 'content': c, 'status': d, 'created_date ': f'{e.day}-{e.month}-{e.year}', 'issue_date': f }
-    notes.append(note)
+    note = {f'Заметка № {1+n}.' 'username': a, 'title': b, 'content': c, 'status': d, 'created_date ': f'{e.day}-{e.month}-{e.year}', 'issue_date': f } # Создаем словарь для заметки
+    notes.append(note) # Добавление словаря с новой заметкой в список заметок
     n = n + 1
+    for key in note:
+        print(key, note[key])
+    print("-------------------------------------")
 
+# Определение функции "Вывод заметок на экран"
 def display_notes(notes):
-    for note in notes:
-        print('------------------------------')
-        for key in note:
-            print(key, note[key])
+    if len(notes) ==0:
+        print('У вас нет сохранённых заметок.')
+    else:
+        print('Список заметок:\n------------------------------')
+        for i in range(len(notes)):
+            for key , value in notes[i].items():
+                print(key, ':', value)
+            print("-------------------------------------")
 
+# Определение функции "Обновление заметок"
 def update_note(note):
+    print(f'Текущие данные заметки: {note}')
     a = input('Какие данные вы хотите обновить? (username, title, content, status, issue_date): ')
     if note[a]:
         b = input(f'Введите новое значение для {a}: ')
         note[a] = b
     print(note)
 
+# Определение функции "Удаление заметок"
 def delete_note(notes):
     for note in notes:
         for key in note:
@@ -38,18 +50,21 @@ def delete_note(notes):
         for key in note:
             print(key, note[key])
 
+# Определение функции поиска заметок
 def search_notes(notes, keyword=None, status=None):
     if len(notes) == 0:
         print("\nСписок заметок пуст.\nПоиск невозможен.")
         return
+# выполняется условие при отсутствии Ключевого слова и Статуса
     if keyword is None and status is None:
         print("\nКлючевое слово и/или Статус не введены.\nПоиск завершен.")
-    elif keyword != None and status is None:
-        j = 0
+# выполняется поиск при наличии Ключевого слова и отсутствии Статуса
+    elif keyword != None and status is (None or ''):
+        j = 0 # счетчик найденных заметок
         for i in range(len(notes)):
-            cur_values = list(notes[i].values())
-            for k in range(len(cur_values)):
-                if keyword in cur_values[k]:
+            cur_values = list(notes[i].values()) # значения словаря i заносим во временный список(cur_values)
+            for k in range(len(cur_values)): # цикл проверки наличия Ключевого слова во временном списке
+                if keyword in cur_values[k]:  # проверка наличия Ключевого слова в элементе 'к' временного списка
                     j += 1
                     if j == 1:
                         print(f"\nПо Ключевому слову - '{keyword}' найдены заметки:")
@@ -58,14 +73,13 @@ def search_notes(notes, keyword=None, status=None):
                         print(f"Заметка{j}.")
                     for key, value in notes[i].items():
                         print(key, "-", value)
-        if j == 0:
-            print(f"\nКлючевого слова - '{keyword}' в заметках не существует."
-                  "\nПоиск завершен.")
-
-    elif keyword is None and status != None:
-        j = 0
+        if j == 0: # Вывод на экран сообщения об отсутствии в заметках введенного Ключевого слова
+            print("Заметки, соответствующие запросу, не найдены.")
+# выполняется поиск при отсутствии Ключевого слова и наличии Статуса
+    elif keyword is (None or '') and status != None:
+        j = 0 # счетчик найденных заметок
         for i in range(len(notes)):
-            if status == notes[i].get('status'):
+            if status == notes[i].get('status'): # проверка Статуса во временном списке
                 j += 1
                 if j == 1:
                     print(f"\nПо Статусу - '{status}' найдены заметки:")
@@ -74,15 +88,15 @@ def search_notes(notes, keyword=None, status=None):
                     print(f"Заметка{j}.")
                 for key, value in notes[i].items():
                     print(key, "-", value)
-        if j == 0:
-            print(f"\nСтатуса - '{status}' в заметках не существует."
-                  "\nПоиск завершен.")
+        if j == 0: # Вывод на экран сообщения об отсутствии в заметках введенного Статуса
+            print("Заметки, соответствующие запросу, не найдены.")
+# выполняется поиск при одновременном наличии Ключевого слова и Статуса
     else:
-        j = 0
+        j = 0 # счетчик найденных заметок
         for i in range(len(notes)):
-            cur_values = list(notes[i].values())
-            for k in range(len(cur_values)):
-                if keyword in cur_values[k] and status == notes[i].get('status'):
+            cur_values = list(notes[i].values()) # значения словаря i заносим во временный список - cur_values
+            for k in range(len(cur_values)): # цикл проверки наличия Ключевого слова во временном списке
+                if keyword in cur_values[k] and status == notes[i].get('status'): # проверка Ключевого слова в элементе 'к' временного списка и Статуса в словаре notes[i]
                     j += 1
                     if j == 1:
                         print(f"\nПо Ключевому слову - '{keyword}' и Статусу - '{status}' найдены заметки:")
@@ -92,31 +106,34 @@ def search_notes(notes, keyword=None, status=None):
                     for key, value in notes[i].items():
                         print(key, "-", value)
 
-        if j == 0:
-            print(f"\nНе найдены заметки с одновременным наличием Ключевого слова - '{keyword}' и Статуса - '{status}'."
-                  "\nПоиск завершен.")
+        if j == 0:# Вывод на экран сообщения об отсутствии в заметках введенных Ключевого слова и Статуса
+            print("Заметки, соответствующие запросу, не найдены.")
 
 notes = []
 
-print('Меню действий:')
-print('1. Создать новую заметку')
-print('2. Показать все заметки')
-print('3. Обновить заметку')
-print('4. Удалить заметку')
-print('5. Найти заметки')
-print('6. Выйти из программы')
-
+# Программа Меню действий
 while True:
-    x = input('Ваш выбор: ')
-    if x == 1:
+    print('Меню действий:')
+    print('1. Создать новую заметку')
+    print('2. Показать все заметки')
+    print('3. Обновить заметку')
+    print('4. Удалить заметку')
+    print('5. Найти заметки')
+    print('6. Выйти из программы')
+    x = input('Введите номер действия: ')
+    if x == 1: # Создание заметки
         create_note()
-    elif x == 2:
+    elif x == 2: # Вывод заметок на экран
         display_notes(notes)
-    elif x == 3:
-        update_note(notes)
-    elif x == 4:
+    elif x == 3:  # Обновить заметку
+        index_note = input("\nВведите номер обновляемой заметки (пустой ввод - окончание обновления): ")
+        if index_note.strip() != "":
+            update_note(notes[int(index_note.strip()) - 1])
+        else:
+            print("\nОбновление завершено.")
+    elif x == 4: # Удаление заметок
         delete_note(notes)
-    elif x == 5:
+    elif x == 5: # Поиск заметок
         search_notes(notes, keyword=input('Введите ключевое слово: '), status=input('Введите статус: '))
     elif x == 6:
         print('Программа завершена. Спасибо за использование!')
