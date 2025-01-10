@@ -2,5 +2,5 @@ day,month,year = input('Введите дату создания заметки 
 created_date = (f'{day}-{month}-{year}')
 day,month,year = input('Введите дату истечения заметки в формате "день-месяц-год" "xx-xx-xxxx": ').split('-')
 issue_date = (f'{day}-{month}-{year}')
-print('Дату создания заметки', created_date[0:5])
-print('Дату истечения заметки', issue_date[0:5])
+print(f'Дату создания заметки {day}-{month}')
+print(f'Дату истечения заметки {day}-{month}')
