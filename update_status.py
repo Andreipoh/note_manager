@@ -7,15 +7,15 @@ while True:
         print(f" {status}")
     new_status = int(input("Ваш выбор: "))
     if new_status == 1 :
-        current_status = statuses[0:1]
+        current_status = statuses[0]
         print(f"Статус заметки обновлён на: {current_status}")
         break
     if new_status == 2:
-        current_status = statuses[1:2]
+        current_status = statuses[1]
         print(f"Статус заметки обновлён на: {current_status}")
         break
     if new_status == 3:
-        current_status = statuses[2:3]
+        current_status = statuses[2]
         print(f"Статус заметки обновлён на: {current_status}")
         break
     else:
