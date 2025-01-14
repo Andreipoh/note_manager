@@ -3,13 +3,13 @@ from datetime import date
 # Определение функции "Создание заметки"
 def create_note():
     n = 0
-    a = input('Введите имя пользователя: ')
-    b = input('Введите заголовок заметки: ')
-    c = input('Введите описание заметки: ')
-    d = input('Введите статус заметки (новая, в процессе, выполнено): ')
-    e = date.today()
-    f = input('Введите дедлайн (день-месяц-год): ')
-    note = {f'Заметка № {1+n}.' 'username': a, 'title': b, 'content': c, 'status': d, 'created_date ': f'{e.day}-{e.month}-{e.year}', 'issue_date': f } # Создаем словарь для заметки
+    username = input('Введите имя пользователя: ')
+    title = input('Введите заголовок заметки: ')
+    content = input('Введите описание заметки: ')
+    status = input('Введите статус заметки (новая, в процессе, выполнено): ')
+    created_date = date.today()
+    issue_date = input('Введите дедлайн (день-месяц-год): ')
+    note = {f'Заметка № {1+n}.' 'username': username, 'title': title, 'content': content, 'status': status, 'created_date': f'{created_date.day}-{created_date.month}-{created_date.year}', 'issue_date': issue_date } # Создаем словарь для заметки
     notes.append(note) # Добавление словаря с новой заметкой в список заметок
     n = n + 1
     for key in note:
