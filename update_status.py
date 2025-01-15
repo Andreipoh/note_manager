@@ -1,10 +1,8 @@
-statuses = ['1. выполнено', '2. в процессе', '3. отложено']
+statuses = ['выполнено', 'в процессе', 'отложено']
 current_status = input("Введите текущий статус заметки: ")
 print(f"Текущий статус заметки: {current_status}")
 while True:
-    print("\n Возможные статусы:")
-    for status in statuses:
-        print(f" {status}")
+    print("Возможные статусы:", '1. выполнено', '2. в процессе', '3. отложено', sep='\n')
     new_status = int(input("Ваш выбор: "))
     if new_status == 1 :
         current_status = statuses[0]
