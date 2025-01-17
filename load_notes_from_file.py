@@ -4,12 +4,6 @@ def load_notes_from_file():
         with open('Notes Manager.txt', encoding= 'utf-8') as file:
             file.seek(0)
             temp_str = file.readline()
-            temp_str = temp_str.replace('Имя', 'username')
-            temp_str = temp_str.replace('Заголовок', 'title')
-            temp_str = temp_str.replace('Описание', 'content')
-            temp_str = temp_str.replace('Статус', 'status')
-            temp_str = temp_str.replace('Дата создания', 'created_date')
-            temp_str = temp_str.replace('Дедлайн', 'issue_date')
             a = 0  # счетчик считанных заметок
             while "Заметка" in temp_str:
                 i = 0  # счетчик строк в заметке
