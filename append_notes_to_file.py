@@ -1,7 +1,18 @@
+from itertools import count
+
+
 def append_notes_to_file(notes, filename):
     try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            info = file.readlines()
+            count = 0
+            for line in info:
+                if 'Заметка' in line:
+                    count +=1
+        pass
         with open(filename, 'a', encoding='utf-8') as file:
             for i in range(len(notes_add)):
+                file.write(f'Заметка № {count+1+i}\n')
                 for key , value in notes[i].items():
                     file.write(f'{key} : {value}\n')
                 file.write("-------------------------------------\n")
